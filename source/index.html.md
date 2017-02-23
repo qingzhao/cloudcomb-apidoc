@@ -336,17 +336,29 @@ curl -X DELETE -H "Authorization: Token 48e6b1bdb5fb4a28a680a977dffb3c30" -H "Co
 > 请求示例
 
 ```http
-POST /api/v1/repositories/myrepo/tags/v1/actions/build/?docker_file=xxxx HTTP/1.1
+POST /api/v1/repositories/myrepo/tags/v1/actions/build HTTP/1.1
 Host: open.c.163.com
-Authorization:Token 48e6b1bdb5fb4a28a680a977dffb3c30
-Content-Type:multipart/form-data
+Authorization: Token 48e6b1bdb5fb4a28a680a977dffb3c30
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="docker_file"; filename=""
+Content-Type: 
+
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+```
+
+```shell
+curl -X POST -H "Authorization: Token 48e6b1bdb5fb4a28a680a977dffb3c30" -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" -F "docker_file=@Dockerfile" "https://open.c.163.com/api/v1/repositories/myrepo/tags/v1/actions/build"
 ```
 
 ### HTTP Request
 
-`POST https://open.c.163.com/api/v1/repositories/{repo_name}/tags/{tag}/actions/build/?docker_file={docker_file}`
+`POST https://open.c.163.com/api/v1/repositories/{repo_name}/tags/{tag}/actions/build/`
 
 ### URL Parameters
+
 |   参数说明  |               描述              |  类型  | 是否必填 |
 |-------------|---------------------------------|--------|----------|
 | repo_name   | 镜像仓库名称                    | String | 必填     |
