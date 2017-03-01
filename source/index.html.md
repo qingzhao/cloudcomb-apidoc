@@ -2768,7 +2768,7 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
         }
     ], 
     "min_ready_seconds": 10
-}' "https://open.c.163.com/api/v1/microservice/50883/actions/update-image"
+}' "https://open.c.163.com/api/v1/microservices/50883/actions/update-image"
 ```
 
 ### HTTP Request
