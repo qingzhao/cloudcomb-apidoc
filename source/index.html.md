@@ -39,14 +39,14 @@ API 访问地址： https://open.c.163.com。
 
 ## 1.2. Access Key
 
-注册后，蜂巢会颁发 Access Key 和 Access Secret 给客户 。
-没有颁发认证授权的将无法调用任何接口
-说明：
+注册后，蜂巢会颁发 Access Key 和 Access Secret 给客户。没有颁发认证授权的将无法调用任何接口
+
 * Access Key：用于标识客户身份，在网络请求中会以某种形式传输；
 * Access Secret ：作为私钥形式存储于客户方本地， 不在网络传递，它的作用是对客户方发起的请求进行数字签名，保证该请求是来自指定客户的请求，并且是合法的有效的。
 
 使用 Access Key 进行身份识别，加上 Access Secret 进行数字签名，即可完成应用接入与认证授权。
 你可以在 [Access Key](https://c.163.com/dashboard#/m/account/accesskey/) 中创建、下载、删除、禁用你的 Access Key。
+
 蜂巢支持多 Access Key、Access Secret，保障你的应用安全。
 
 
@@ -614,7 +614,7 @@ curl -X POST -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Cont
 | namespace      | String | 是       | 空间名称（[获取空间列表](../?http#9-2)）                       | my-ev-admin      |
 | name           | String | 是       | 负载均衡名称                                                   | mylb             |
 | chargeMode     | String | 否       | 计费方式，netflow（流量）/bandwidth（带宽）<br>默认按流量计费  | bandwidth        |
-| bandwidthLimit | int    | 否       | 带宽限制，单位 Mbps，取值范围 [1,100]<br>默认为最大值 100 Mbps | 1                |
+| bandwidthLimit | int    | 否       | 带宽限制，单位 Mbps，取值范围 [1,1000]<br>默认为最大值 1000 Mbps | 1                |
 | description    | String | 否       | 自定义描述信息                                                 | mylb description |
 | address        | String | 否       | 通过指定 IP 创建实例（[获取 IP 列表](../?http#8-2-ip)）        | 59.111.163.163   |
 
