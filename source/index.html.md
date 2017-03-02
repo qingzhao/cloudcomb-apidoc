@@ -849,7 +849,7 @@ curl -X PUT -H "Authorization: Token 15ddd3f91a45462a8c73026488b02f10" -H "Conte
 | lb_name        | String | 是       | 负载均衡名称（[获取负载均衡列表](../?http#6-2)）               | mylb                    |
 | namespace      | String | 是       | 空间名称（[获取空间列表](../?http#9-2)）                       | my-ev-admin             |
 | chargeMode     | String | 否       | 计费方式，netflow（流量）/bandwidth（带宽）<br>默认按流量计费  | bandwidth               |
-| bandwidthLimit | int    | 否       | 带宽限制，单位 Mbps，取值范围 [1,100]<br>默认为最大值 100 Mbps | 10                      |
+| bandwidthLimit | int    | 否       | 带宽限制，单位 Mbps，取值范围 [1,1024]<br>默认为最大值 1024 Mbps | 10                      |
 | description    | String | 否       | 自定义描述信息                                                 | update mylb description |
 
 
@@ -2294,10 +2294,10 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | stateful                    | int              | 是       | 服务状态，0（无状态）/1（有状态）                                                                                                  | 1                                    |
 | replicas                    | int              | 是       | 副本数（有状态服务默认为 1）                                                                                                       | 1                                    |
 | service_name                | String           | 是       | 服务名称                                                                                                                           | ubuntu                               |
-| port_maps                   | List             | 否       | 端口映射信息                                                                                                                       | 详见示例                             |
-| - dest_port                 | int              | 否       | 容器端口                                                                                                                           | 80                                   |
-| - source_port               | int              | 否       | 服务端口                                                                                                                           | 8080                                 |
-| - protocol                  | String           | 否       | 协议                                                                                                                               | TCP                                  |
+| port_maps                   | List             | 是       | 端口映射信息                                                                                                                       | 详见示例                             |
+| - dest_port                 | int              | 是       | 容器端口                                                                                                                           | 80                                   |
+| - source_port               | int              | 是       | 服务端口                                                                                                                           | 8080                                 |
+| - protocol                  | String           | 是       | 协议                                                                                                                               | TCP                                  |
 | spec_id                     | long             | 是       | 规格 id（[规格参数](../?http#9-0)）                                                                                                | 1                                    |
 | state_public_net            |                  | 是       | 公网信息                                                                                                                           | 详见示例                             |
 | - used                      | boolean          | 否       | 是否使用公网（无状态服务为 false）                                                                                                 | true                                 |
