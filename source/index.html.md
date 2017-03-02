@@ -2207,7 +2207,6 @@ Content-Type: application/json
             "ssh_keys": [
                 "sshkey1","sshkey2"
             ],
-            "local_disk_info": [],
             "volume_info": {
                 "163": "/mnt/"
             }
@@ -2263,7 +2262,6 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
             "ssh_keys": [
                 "sshkey1","sshkey2"
             ],
-            "local_disk_info": [],
             "volume_info": {
                 "163": "/mnt/"
             }
@@ -2303,7 +2301,7 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | - used                      | boolean          | 否       | 是否使用公网（无状态服务为 false）                                                                                                 | true                                 |
 | - type                      | String           | 否       | 类型，flow（流量）/ bandwidth（带宽）                                                                                              | flow                                 |
 | - bandwidth                 | int              | 否       | 带宽（单位 Mbps）                                                                                                                  | 20                                   |
-| disk_type                   | int              | 否       | 数据盘类型，0（云硬盘）/1（本地盘）/2（不挂盘）/3（混合使用），默认不挂盘                                                                      | 0                                    |
+| disk_type                   | int              | 否       | 数据盘类型，0（云硬盘）/2（不挂盘），默认不挂盘                                                                      | 0                                    |
 | ip_id                       | Stirng           | 否       | IP 的 uuid（[获取 IP 列表](../?http#8-2-ip)）                                                                                      | cef9069c-d97d-42b1-a86c-f815f748820c |
 | **service_container_infos** | jsonArray        | 是       | 容器相关元信息                                                                                                                     | 详见示例                             |
 | image_path                  | String           | 是       | 镜像地址（[获取镜像列表](../?http#9-5)）                                                                                           | hub.c.163.com/public/ubuntu:14.04    |
@@ -2317,10 +2315,6 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | memory_weight               | int              | 否       | 内存占比（多容器为 1-99，总和为100；单容器默认为100，可以不设置）                                                                                    | 100                                  |
 | ssh_keys                    | List             | 否       | 需要注入的 ssh 密钥名称（[获取密钥列表](../?http#4-2)）                                                                            | ["sshkey1","sshkey2"]                |
 | volume_info                 | Map<Long,String> | 否       | 云硬盘挂载信息{云盘id:挂载路径}（[获取云硬盘列表](../?http#7-2)）                                | {"163": "/mnt/"}                     |
-| local_disk_info             | jsonArray        | 否       | 本地盘挂载信息（有状态容器使用本地盘必填；无状态容器为空）                                                                         |                                      |
-| - name                      | String           | 否       | 本地盘名称                                                                                                                         |                                      |
-| - path                      | String           | 否       | 本地盘挂载路径                                                                                                                     |                                      |
-| - size                      | int              | 否       | 本地盘大小（单位 GB）                                                                                                              |                                      |
 
 
 ### Query Parameters
@@ -2522,7 +2516,6 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 | image_path                  | String     | 镜像地址                          | hub.c.163.com/public/ubuntu:14.04                                                                                    |
 | repo_name                   | String     | 镜像仓库名称                      | ubuntu                                                                                                               |
 | image_tag                   | String     | 镜像 tag                          | 14.04                                                                                                                |
-| local_disk_info             | List       | 本地盘挂载信息                    |                                                                                                                      |
 | cpu_weight                  | int        | cpu 占比                          | 100                                                                                                                  |
 | memory_weight               | int        | 内存占比                          | 100                                                                                                                  |
 | docker_container_ids        | List       | 容器运行时 id 列表                | ["79e666ac71b70e446eb32a7eecc92830d937a4518ebb871456eae5fd8fcf5627"]                                                 |
