@@ -614,7 +614,7 @@ curl -X POST -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Cont
 | namespace      | String | 是       | 空间名称（[获取空间列表](../?http#9-2)）                       | my-ev-admin      |
 | name           | String | 是       | 负载均衡名称                                                   | mylb             |
 | chargeMode     | String | 否       | 计费方式，netflow（流量）/bandwidth（带宽）<br>默认按流量计费  | bandwidth        |
-| bandwidthLimit | int    | 否       | 带宽限制，单位 Mbps，取值范围 [1,1000]<br>默认为最大值 1000 Mbps | 1                |
+| bandwidthLimit | int    | 否       | 带宽限制，单位 Mbps，取值范围 [1,1024]<br>默认为最大值 1024 Mbps | 1                |
 | description    | String | 否       | 自定义描述信息                                                 | mylb description |
 | address        | String | 否       | 通过指定 IP 创建实例（[获取 IP 列表](../?http#8-2-ip)）        | 59.111.163.163   |
 
