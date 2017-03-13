@@ -1949,17 +1949,28 @@ curl -X DELETE -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Co
 
 ## 9.0. 规格参数
 
-| id |    名称    | 单价（元/小时） | CPU（核） |  内存  | 硬盘（GB） | 硬盘类型 |
-|----|------------|-----------------|-----------|--------|------------|----------|
-|  1 | 微小型     |           0.049 |         1 | 64 0MB |         20 | SSD      |
-|  2 | 小型       |            0.06 |         1 | 1 GB   |         20 | SSD      |
-|  3 | 中型       |            0.19 |         2 | 2 GB   |         20 | SSD      |
-|  4 | 大型       |            0.25 |         2 | 4 GB   |         20 | SSD      |
-|  5 | 豪华型     |            0.52 |         4 | 8 GB   |         20 | SSD      |
-|  6 | 旗舰型     |            1.02 |         8 | 16 GB  |         20 | SSD      |
-|  7 | 超级旗舰型 |            3.32 |        16 | 64 GB  |         20 | SSD      |
+| spec_alias | CPU（核） | 内存（GB） | 系统盘（GB） |
+|------------|-----------|------------|--------------|
+| C1M1S20    |         1 |          1 |           20 |
+| C1M2S20    |         1 |          2 |           20 |
+| C2M2S20    |         2 |          2 |           20 |
+| C2M4S20    |         2 |          4 |           20 |
+| C2M8S20    |         2 |          8 |           20 |
+| C4M4S20    |         4 |          4 |           20 |
+| C4M8S20    |         4 |          8 |           20 |
+| C4M16S20   |         4 |         16 |           20 |
+| C8M8S20    |         8 |          8 |           20 |
+| C8M16S20   |         8 |         16 |           20 |
+| C8M32S20   |         8 |         32 |           20 |
+| C16M16S20  |        16 |         16 |           20 |
+| C16M32S20  |        16 |         32 |           20 |
+| C16M64S20  |        16 |         64 |           20 |
+| C16M128S20 |        16 |        128 |           20 |
+| C32M32S20  |        32 |         32 |           20 |
+| C32M64S20  |        32 |         64 |           20 |
+| C32M128S20 |        32 |        128 |           20 |
 
-
+费用详见：[服务管理价格与计费](http://support.c.163.com/md.html#!容器服务/服务管理/服务管理价格与计费.md)
 
 ## 9.1. 创建空间
 
@@ -2175,7 +2186,7 @@ Content-Type: application/json
                 "protocol": "TCP"
             }
         ],
-        "spec_alias": 1,
+        "spec_alias": "C1M2S20",
         "state_public_net": {
             "used": true,
             "type": "flow",
@@ -2230,7 +2241,7 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
                 "protocol": "TCP"
             }
         ],
-        "spec_alias": 1,
+        "spec_alias": "C1M2S20",
         "state_public_net": {
             "used": true,
             "type": "flow",
@@ -2293,15 +2304,15 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | replicas                    | int              | 是       | 副本数（有状态服务默认为 1）                                                                                                       | 1                                    |
 | service_name                | String           | 是       | 服务名称                                                                                                                           | ubuntu                               |
 | port_maps                   | List             | 是       | 端口映射信息                                                                                                                       | 详见示例                             |
-| - target_port                 | int              | 是       | 容器端口                                                                                                                           | 80                                   |
-| - port               | int              | 是       | 服务端口                                                                                                                           | 8080                                 |
+| - target_port               | int              | 是       | 容器端口                                                                                                                           | 80                                   |
+| - port                      | int              | 是       | 服务端口                                                                                                                           | 8080                                 |
 | - protocol                  | String           | 是       | 协议                                                                                                                               | TCP                                  |
-| spec_alias                     | long             | 是       | 规格 id（[规格参数](../?http#9-0)）                                                                                                | 1                                    |
+| spec_alias                  | String           | 是       | 规格别名（[规格参数](../?http#9-0)）                                                                                               | C1M2S20                              |
 | state_public_net            |                  | 是       | 公网信息                                                                                                                           | 详见示例                             |
 | - used                      | boolean          | 否       | 是否使用公网（无状态服务为 false）                                                                                                 | true                                 |
 | - type                      | String           | 否       | 类型，flow（流量）/ bandwidth（带宽）                                                                                              | flow                                 |
 | - bandwidth                 | int              | 否       | 带宽（单位 Mbps）                                                                                                                  | 20                                   |
-| disk_type                   | int              | 否       | 数据盘类型，0（云硬盘）/2（不挂盘），默认不挂盘                                                                      | 0                                    |
+| disk_type                   | int              | 否       | 数据盘类型，0（云硬盘）/2（不挂盘），默认不挂盘                                                                                    | 0                                    |
 | ip_id                       | Stirng           | 否       | IP 的 uuid（[获取 IP 列表](../?http#8-2-ip)）                                                                                      | cef9069c-d97d-42b1-a86c-f815f748820c |
 | **service_container_infos** | jsonArray        | 是       | 容器相关元信息                                                                                                                     | 详见示例                             |
 | image_path                  | String           | 是       | 镜像地址（[获取镜像列表](../?http#9-5)）                                                                                           | hub.c.163.com/public/ubuntu:14.04    |
@@ -2311,10 +2322,10 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | - key                       | String           | 否       | 环境变量 key                                                                                                                       | password                             |
 | - value                     | String           | 否       | 环境变量 value                                                                                                                     | password                             |
 | log_dirs                    | List             | 否       | 日志服务采集日志的目录                                                                                                             | ["/var/log/"]                        |
-| cpu_weight                  | int              | 否       | cpu 占比（多容器为 1-99，总和为100；单容器默认为100，可以不设置）                                                                                    | 100                                  |
-| memory_weight               | int              | 否       | 内存占比（多容器为 1-99，总和为100；单容器默认为100，可以不设置）                                                                                    | 100                                  |
+| cpu_weight                  | int              | 否       | cpu 占比（多容器为 1-99，总和为100；单容器默认为100，可以不设置）                                                                  | 100                                  |
+| memory_weight               | int              | 否       | 内存占比（多容器为 1-99，总和为100；单容器默认为100，可以不设置）                                                                  | 100                                  |
 | ssh_keys                    | List             | 否       | 需要注入的 ssh 密钥名称（[获取密钥列表](../?http#4-2)）                                                                            | ["sshkey1","sshkey2"]                |
-| volume_info                 | Map<Long,String> | 否       | 云硬盘挂载信息{云盘id:挂载路径}（[获取云硬盘列表](../?http#7-2)）                                | {"163": "/mnt/"}                     |
+| volume_info                 | Map<Long,String> | 否       | 云硬盘挂载信息{云盘id:挂载路径}（[获取云硬盘列表](../?http#7-2)）                                                                  | {"163": "/mnt/"}                     |
 
 
 ### Query Parameters
@@ -2362,7 +2373,7 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
                     "target_port": 80
                 }
             ],
-            "spec_alias": 3,
+            "spec_info": "{\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20}",
             "stop_service": 0
         }
     ]
@@ -2384,19 +2395,19 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
 
 ### Query Parameters
 
-|     参数     |   类型   |                描述               |  示例值  |
-|--------------|----------|-----------------------------------|----------|
-| total        | 服务总数 | 该空间内服务总数                  | 1        |
-| id           | long     | 服务 id                           | 50511    |
-| status       | String   | 服务名称                          | mysql    |
-| replicas     | int      | 副本数                            | 2        |
-| stateful     | int      | 服务状态，0（无状态）/1（有状态） | 1        |
-| port_maps    | List     | 端口映射信息                      | 详见示例 |
-| protocol     | String   | 协议                              | TCP      |
-| port  | int      | 容器端口                          | 80       |
-| target_port    | int      | 服务端口                          | 80       |
-| spec_alias      | long     | 规格 id                           | 3        |
-| stop_service | int      | 停服标识                          | 0        |
+|     参数     |   类型   |                描述               |                                                示例值                                                |
+|--------------|----------|-----------------------------------|------------------------------------------------------------------------------------------------------|
+| total        | 服务总数 | 该空间内服务总数                  | 1                                                                                                    |
+| id           | long     | 服务 id                           | 50511                                                                                                |
+| status       | String   | 服务名称                          | mysql                                                                                                |
+| replicas     | int      | 副本数                            | 2                                                                                                    |
+| stateful     | int      | 服务状态，0（无状态）/1（有状态） | 1                                                                                                    |
+| port_maps    | List     | 端口映射信息                      | 详见示例                                                                                             |
+| protocol     | String   | 协议                              | TCP                                                                                                  |
+| port         | int      | 容器端口                          | 80                                                                                                   |
+| target_port  | int      | 服务端口                          | 80                                                                                                   |
+| spec_info    | Map      | 规格信息                          | {\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20} |
+| stop_service | int      | 停服标识                          | 0                                                                                                    |
 
 
 
@@ -2425,7 +2436,7 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
     "replicas": 1,
     "status": "create_succ",
     "service_name": "ubuntu",
-    "spec_info": "{\"cpu\":1000,\"diskType\":\"SSD\",\"id\":1,\"memory\":671088640,\"name\":\"微小型\",\"price\":0.049,\"storage\":20}",
+    "spec_info": "{\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20}",
     "port_maps": "[{\"destPort\":80,\"protocol\":\"TCP\",\"sourcePort\":8080}]",
     "stateful": 1,
     "state_public_net": "{\"bandwidth\":20,\"type\":\"flow\",\"used\":true}",
@@ -2493,36 +2504,36 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 
 ### Query Parameters
 
-|             参数            |    类型    |                描述               |                                                        示例值                                                        |
-|-----------------------------|------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| **service_info**            | jsonObject | 服务相关元信息                    | 详见示例                                                                                                             |
-| id                          | long       | 空间 id                           | 51616                                                                                                                |
-| namespace                   | String     | 空间名称                          | my-ev-admin                                                                                                          |
-| replicas                    | int        | 副本数（有状态服务默认为 1）      | 1                                                                                                                    |
-| status                      | String     | 服务当前状态                      | create_succ                                                                                                          |
-| service_name                | String     | 服务名称                          | ubuntu                                                                                                               |
-| spec_info                   | Map        | 规格信息                          | {\"cpu\":1000,\"diskType\":\"SSD\",\"id\":1,\"memory\":671088640,\"name\":\"微小型\",\"price\":0.049,\"storage\":20} |
-| port_maps                   | List       | 端口映射信息                      | [{\"destPort\":80,\"protocol\":\"TCP\",\"sourcePort\":8080}]                                                         |
-| stateful                    | int        | 服务状态，0（无状态）/1（有状态） | 1                                                                                                                    |
-| state_public_net            | Map        | 公网信息                          | {\"bandwidth\":20,\"type\":\"flow\",\"used\":true}                                                                   |
-| extends_disk_size           | long       | 扩展盘大小                        | 0                                                                                                                    |
-| pub_ip                      | String     | 公网 IP                           | 59.111.163.163                                                                                                       |
-| stop_service                | int        | 停服状态，0（停服）/1（未停服）   | 0                                                                                                                    |
-| **service_container_infos** | jsonArray  | 容器相关元信息                    | 详见示例                                                                                                             |
-| envs                        | List       | 环境变量，key-value 的形式        | 详见示例                                                                                                             |
-| command                     | String     | 自定义启动命令                    | null                                                                                                                 |
-| volumes                     | List       | 云硬盘信息                        | { "name": "volume","mount_path": "/mnt/"}                                                                            |
-| container_id                | long       | 容器 id                           | 51577                                                                                                                |
-| container_name              | String     | 容器名称                          | container002                                                                                                         |
-| ssh_keys                    | List       | ssh 密钥名称                      | ["sshkey1","sshkey2"]                                                                                                |
-| log_dirs                    | List       | 日志服务采集日志的目录            | ["/var/log/"]                                                                                                        |
-| image_path                  | String     | 镜像地址                          | hub.c.163.com/public/ubuntu:14.04                                                                                    |
-| repo_name                   | String     | 镜像仓库名称                      | ubuntu                                                                                                               |
-| image_tag                   | String     | 镜像 tag                          | 14.04                                                                                                                |
-| cpu_weight                  | int        | cpu 占比                          | 100                                                                                                                  |
-| memory_weight               | int        | 内存占比                          | 100                                                                                                                  |
-| docker_container_ids        | List       | 容器运行时 id 列表                | ["79e666ac71b70e446eb32a7eecc92830d937a4518ebb871456eae5fd8fcf5627"]                                                 |
-| lan_ips                     | List       | 容器内网 IP                       | 10.18.192.225                                                                                                        |
+|             参数            |    类型    |                描述               |                                                示例值                                                |
+|-----------------------------|------------|-----------------------------------|------------------------------------------------------------------------------------------------------|
+| **service_info**            | jsonObject | 服务相关元信息                    | 详见示例                                                                                             |
+| id                          | long       | 空间 id                           | 51616                                                                                                |
+| namespace                   | String     | 空间名称                          | my-ev-admin                                                                                          |
+| replicas                    | int        | 副本数（有状态服务默认为 1）      | 1                                                                                                    |
+| status                      | String     | 服务当前状态                      | create_succ                                                                                          |
+| service_name                | String     | 服务名称                          | ubuntu                                                                                               |
+| spec_info                   | Map        | 规格信息                          | {\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20} |
+| port_maps                   | List       | 端口映射信息                      | [{\"destPort\":80,\"protocol\":\"TCP\",\"sourcePort\":8080}]                                         |
+| stateful                    | int        | 服务状态，0（无状态）/1（有状态） | 1                                                                                                    |
+| state_public_net            | Map        | 公网信息                          | {\"bandwidth\":20,\"type\":\"flow\",\"used\":true}                                                   |
+| extends_disk_size           | long       | 扩展盘大小                        | 0                                                                                                    |
+| pub_ip                      | String     | 公网 IP                           | 59.111.163.163                                                                                       |
+| stop_service                | int        | 停服状态，0（停服）/1（未停服）   | 0                                                                                                    |
+| **service_container_infos** | jsonArray  | 容器相关元信息                    | 详见示例                                                                                             |
+| envs                        | List       | 环境变量，key-value 的形式        | 详见示例                                                                                             |
+| command                     | String     | 自定义启动命令                    | null                                                                                                 |
+| volumes                     | List       | 云硬盘信息                        | { "name": "volume","mount_path": "/mnt/"}                                                            |
+| container_id                | long       | 容器 id                           | 51577                                                                                                |
+| container_name              | String     | 容器名称                          | container002                                                                                         |
+| ssh_keys                    | List       | ssh 密钥名称                      | ["sshkey1","sshkey2"]                                                                                |
+| log_dirs                    | List       | 日志服务采集日志的目录            | ["/var/log/"]                                                                                        |
+| image_path                  | String     | 镜像地址                          | hub.c.163.com/public/ubuntu:14.04                                                                    |
+| repo_name                   | String     | 镜像仓库名称                      | ubuntu                                                                                               |
+| image_tag                   | String     | 镜像 tag                          | 14.04                                                                                                |
+| cpu_weight                  | int        | cpu 占比                          | 100                                                                                                  |
+| memory_weight               | int        | 内存占比                          | 100                                                                                                  |
+| docker_container_ids        | List       | 容器运行时 id 列表                | ["79e666ac71b70e446eb32a7eecc92830d937a4518ebb871456eae5fd8fcf5627"]                                 |
+| lan_ips                     | List       | 容器内网 IP                       | 10.18.192.225                                                                                        |
 
 ## 9.8. 设置有状态服务
 
@@ -2788,14 +2799,14 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 > 请求示例
 
 ```http
-PUT /api/v1/microservices/50883/specification?spec_alias=3 HTTP/1.1
+PUT /api/v1/microservices/50883/specification?spec_alias=C2M2S20 HTTP/1.1
 Host: open.c.163.com
 Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f
 Content-Type: application/json
 ```
 
 ```shell
-curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Content-Type: application/json" "https://open.c.163.com/api/v1/microservices/50883/specification?spec_alias=3"
+curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Content-Type: application/json" "https://open.c.163.com/api/v1/microservices/50883/specification?spec_alias=C2M2S20"
 ```
 
 ### HTTP Request
@@ -2804,10 +2815,10 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 
 ### URL Parameters
 
-|   参数  | 类型 | 是否必填 |                                  描述                                 | 示例值 |
-|---------|------|----------|-----------------------------------------------------------------------|--------|
-| id      | long | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） |  50883 |
-| spec_alias | long | 是       | 新的规格 id（[规格参数列表](../?http#9-0)）                           |      3 |
+|    参数    | 类型 | 是否必填 |                                  描述                                 | 示例值  |
+|------------|------|----------|-----------------------------------------------------------------------|---------|
+| id         | long | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 50883   |
+| spec_alias | long | 是       | 新的规格别名（[规格参数列表](../?http#9-0)）                          | C2M2S20 |
 
 
 ## 9.14. 重启和冷重启服务
