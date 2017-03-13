@@ -2663,8 +2663,8 @@ Content-Type: application/json
 {
     "port_maps": [
         {
-            "src_port": 80,
-            "dst_port": 8080, 
+            "port": 80,
+            "target_port": 8080, 
             "protocol": "TCP"
         }
     ]
@@ -2675,8 +2675,8 @@ Content-Type: application/json
 curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Content-Type: application/json" -d '{
     "port_maps": [
         {
-            "src_port": 80,
-            "dst_port": 8080, 
+            "port": 80,
+            "target_port": 8080, 
             "protocol": "TCP"
         }
     ]
