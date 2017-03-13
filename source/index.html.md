@@ -2469,6 +2469,9 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
       "memory_weight": 100,
       "docker_container_ids": [
         "79e666ac71b70e446eb32a7eecc92830d937a4518ebb871456eae5fd8fcf5627"
+      ],
+      "lan_ips": [
+        "10.18.192.225"
       ]
     }
   ]
@@ -2506,7 +2509,7 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 | pub_ip                      | String     | 公网 IP                           | 59.111.163.163                                                                                                       |
 | stop_service                | int        | 停服状态，0（停服）/1（未停服）   | 0                                                                                                                    |
 | **service_container_infos** | jsonArray  | 容器相关元信息                    | 详见示例                                                                                                             |
-| envs                        | List       | 环境变量，key-value 的形式         | 详见示例                                                                                                             |
+| envs                        | List       | 环境变量，key-value 的形式        | 详见示例                                                                                                             |
 | command                     | String     | 自定义启动命令                    | null                                                                                                                 |
 | volumes                     | List       | 云硬盘信息                        | { "name": "volume","mount_path": "/mnt/"}                                                                            |
 | container_id                | long       | 容器 id                           | 51577                                                                                                                |
@@ -2519,7 +2522,7 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 | cpu_weight                  | int        | cpu 占比                          | 100                                                                                                                  |
 | memory_weight               | int        | 内存占比                          | 100                                                                                                                  |
 | docker_container_ids        | List       | 容器运行时 id 列表                | ["79e666ac71b70e446eb32a7eecc92830d937a4518ebb871456eae5fd8fcf5627"]                                                 |
-|
+| lan_ips                     | List       | 容器内网 IP                       | 10.18.192.225                                                                                                        |
 
 ## 9.8. 设置有状态服务
 
