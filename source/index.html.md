@@ -1511,6 +1511,8 @@ curl -X GET -H "Authorization: Token 48e6b1bdb5fb4a28a680a977dffb3c30" -H "Conte
 
 通过 [获取云硬盘列表](../?http#7-2) 获取的云硬盘 id 扩容该云硬盘。
 
+<span>Note:</span><div class="alertContent">暂不支持在线扩容</div>
+
 > 请求示例
 
 ```http
