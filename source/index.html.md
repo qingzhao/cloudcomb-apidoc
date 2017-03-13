@@ -2642,12 +2642,12 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 | id              | long | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 50883                      |
 | container_infos | List | 是       | 容器相关元信息                                                        | 详见示例                   |
 | container_id    | long | 是       | 容器 id（[查看服务详情](../?http#9-7)）                               | 50883                      |
-| envs            | List | 否       | 环境变量，key-value 的形式                                            | 详见示例                   |
-| log_dirs        | List | 否       | 日志服务采集日志的目录                                                | ["/var/log/","/var/logs/"] |
+| envs            | List | 是       | 可为空；环境变量，key-value 的形式                                    | 详见示例                   |
+| log_dirs        | List | 是       | 可为空；日志服务采集日志的目录                                        | ["/var/log/","/var/logs/"] |
 | cpu_weight      | int  | 是       | cpu 占比（1-99，总和为100，单容器下必须为 100）                       | 100                        |
 | memory_weight   | int  | 是       | 内存占比（1-99，总和为100，单容器下必须为 100）                       | 100                        |
 
-
+<span>Attention:</span><div class="alertContent">环境变量和日志目录将会全量替换。若需要保留之前的环境变量和日志目录，需要传入之前的配置。</div>
 
 ## 9.10. 更改端口配置
 
@@ -2692,10 +2692,10 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 |      参数     |  类型  | 是否必填 |                                  描述                                 |  示例值  |
 |---------------|--------|----------|-----------------------------------------------------------------------|----------|
 | id            | long   | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 51572    |
-| port_maps     | List   | 否       | 端口映射信息                                                          | 详见示例 |
-| - target_port   | int    | 否       | 服务端口                                                              | 80       |
-| - port | int    | 否       | 容器端口                                                              | 8080     |
-| - protocol    | String | 否       | 协议，TCP/UDP                                                         | TCP      |
+| port_maps     | List   | 是       | 端口映射信息                                                          | 详见示例 |
+| - target_port | int    | 是       | 服务端口                                                              | 80       |
+| - port        | int    | 是       | 容器端口                                                              | 8080     |
+| - protocol    | String | 是       | 协议，TCP/UDP                                                         | TCP      |
 
 
 ## 9.11. 弹性伸缩
