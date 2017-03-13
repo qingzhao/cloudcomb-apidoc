@@ -2170,8 +2170,8 @@ Content-Type: application/json
         "service_name": "ubuntu",
         "port_maps": [
             {
-                "dest_port": "80",
-                "source_port": "8080",
+                "target_port": "80",
+                "port": "8080",
                 "protocol": "TCP"
             }
         ],
@@ -2225,8 +2225,8 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
         "service_name": "ubuntu",
         "port_maps": [
             {
-                "dest_port": "80",
-                "source_port": "8080",
+                "target_port": "80",
+                "port": "8080",
                 "protocol": "TCP"
             }
         ],
@@ -2293,8 +2293,8 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | replicas                    | int              | 是       | 副本数（有状态服务默认为 1）                                                                                                       | 1                                    |
 | service_name                | String           | 是       | 服务名称                                                                                                                           | ubuntu                               |
 | port_maps                   | List             | 是       | 端口映射信息                                                                                                                       | 详见示例                             |
-| - dest_port                 | int              | 是       | 容器端口                                                                                                                           | 80                                   |
-| - source_port               | int              | 是       | 服务端口                                                                                                                           | 8080                                 |
+| - target_port                 | int              | 是       | 容器端口                                                                                                                           | 80                                   |
+| - port               | int              | 是       | 服务端口                                                                                                                           | 8080                                 |
 | - protocol                  | String           | 是       | 协议                                                                                                                               | TCP                                  |
 | spec_alias                     | long             | 是       | 规格 id（[规格参数](../?http#9-0)）                                                                                                | 1                                    |
 | state_public_net            |                  | 是       | 公网信息                                                                                                                           | 详见示例                             |
@@ -2358,8 +2358,8 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
             "port_maps": [
                 {
                     "protocol": "TCP",
-                    "source_port": 80,
-                    "dest_port": 80
+                    "port": 80,
+                    "target_port": 80
                 }
             ],
             "spec_alias": 3,
@@ -2393,8 +2393,8 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
 | stateful     | int      | 服务状态，0（无状态）/1（有状态） | 1        |
 | port_maps    | List     | 端口映射信息                      | 详见示例 |
 | protocol     | String   | 协议                              | TCP      |
-| source_port  | int      | 容器端口                          | 80       |
-| dest_port    | int      | 服务端口                          | 80       |
+| port  | int      | 容器端口                          | 80       |
+| target_port    | int      | 服务端口                          | 80       |
 | spec_alias      | long     | 规格 id                           | 3        |
 | stop_service | int      | 停服标识                          | 0        |
 
@@ -2693,8 +2693,8 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 |---------------|--------|----------|-----------------------------------------------------------------------|----------|
 | id            | long   | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 51572    |
 | port_maps     | List   | 否       | 端口映射信息                                                          | 详见示例 |
-| - dest_port   | int    | 否       | 服务端口                                                              | 80       |
-| - source_port | int    | 否       | 容器端口                                                              | 8080     |
+| - target_port   | int    | 否       | 服务端口                                                              | 80       |
+| - port | int    | 否       | 容器端口                                                              | 8080     |
 | - protocol    | String | 否       | 协议，TCP/UDP                                                         | TCP      |
 
 
