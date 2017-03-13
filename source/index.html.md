@@ -2175,7 +2175,7 @@ Content-Type: application/json
                 "protocol": "TCP"
             }
         ],
-        "spec_id": 1,
+        "spec_alias": 1,
         "state_public_net": {
             "used": true,
             "type": "flow",
@@ -2230,7 +2230,7 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
                 "protocol": "TCP"
             }
         ],
-        "spec_id": 1,
+        "spec_alias": 1,
         "state_public_net": {
             "used": true,
             "type": "flow",
@@ -2296,7 +2296,7 @@ curl -X POST -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Cont
 | - dest_port                 | int              | 是       | 容器端口                                                                                                                           | 80                                   |
 | - source_port               | int              | 是       | 服务端口                                                                                                                           | 8080                                 |
 | - protocol                  | String           | 是       | 协议                                                                                                                               | TCP                                  |
-| spec_id                     | long             | 是       | 规格 id（[规格参数](../?http#9-0)）                                                                                                | 1                                    |
+| spec_alias                     | long             | 是       | 规格 id（[规格参数](../?http#9-0)）                                                                                                | 1                                    |
 | state_public_net            |                  | 是       | 公网信息                                                                                                                           | 详见示例                             |
 | - used                      | boolean          | 否       | 是否使用公网（无状态服务为 false）                                                                                                 | true                                 |
 | - type                      | String           | 否       | 类型，flow（流量）/ bandwidth（带宽）                                                                                              | flow                                 |
@@ -2362,7 +2362,7 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
                     "dest_port": 80
                 }
             ],
-            "spec_id": 3,
+            "spec_alias": 3,
             "stop_service": 0
         }
     ]
@@ -2395,7 +2395,7 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
 | protocol     | String   | 协议                              | TCP      |
 | source_port  | int      | 容器端口                          | 80       |
 | dest_port    | int      | 服务端口                          | 80       |
-| spec_id      | long     | 规格 id                           | 3        |
+| spec_alias      | long     | 规格 id                           | 3        |
 | stop_service | int      | 停服标识                          | 0        |
 
 
@@ -2785,26 +2785,26 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 > 请求示例
 
 ```http
-PUT /api/v1/microservices/50883/specification?spec_id=3 HTTP/1.1
+PUT /api/v1/microservices/50883/specification?spec_alias=3 HTTP/1.1
 Host: open.c.163.com
 Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f
 Content-Type: application/json
 ```
 
 ```shell
-curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Content-Type: application/json" "https://open.c.163.com/api/v1/microservices/50883/specification?spec_id=3"
+curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Content-Type: application/json" "https://open.c.163.com/api/v1/microservices/50883/specification?spec_alias=3"
 ```
 
 ### HTTP Request
 
-`PUT https://open.c.163.com/api/v1/microservices/{id}/specification?spec_id={spec_id}`
+`PUT https://open.c.163.com/api/v1/microservices/{id}/specification?spec_alias={spec_alias}`
 
 ### URL Parameters
 
 |   参数  | 类型 | 是否必填 |                                  描述                                 | 示例值 |
 |---------|------|----------|-----------------------------------------------------------------------|--------|
 | id      | long | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） |  50883 |
-| spec_id | long | 是       | 新的规格 id（[规格参数列表](../?http#9-0)）                           |      3 |
+| spec_alias | long | 是       | 新的规格 id（[规格参数列表](../?http#9-0)）                           |      3 |
 
 
 ## 9.14. 重启和冷重启服务
