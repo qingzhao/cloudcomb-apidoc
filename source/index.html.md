@@ -18,8 +18,6 @@ search: true
 
 # 1. OpenAPI 简介
 
-<aside class="success">网易蜂巢 OpenAPI Beta 版，未来可能会有所调整。若有任何问题，请提交工单联系我们。</aside> 
-
 蜂巢 API 提供更灵活的资源控制方式，满足你的定制化需求，如自动化部署、持续集成等功能。蜂巢 API 采用 Restful API 风格，支持内省，支持 API 访问频率限制。
 
 蜂巢 API 需要使用 API Token 来发起 API 请求。
@@ -2157,6 +2155,7 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
 |      参数     |  类型  |         描述         |            示例值            |
 |---------------|--------|----------------------|------------------------------|
 | custom_images | List   | 私有镜像和收藏的镜像 | 详见示例                     |
+| public_images | List   | 蜂巢官方镜像         | 详见示例                     |
 | tag           | String | 镜像标签             | v1                           |
 | repo_id       | long   | 镜像仓库 id          | 44627                        |
 | repo_name     | String | 镜像仓库名称         | mysql                        |
@@ -2535,7 +2534,7 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 | cpu_weight                  | int        | cpu 占比                          | 100                                                                                                  |
 | memory_weight               | int        | 内存占比                          | 100                                                                                                  |
 | docker_container_ids        | List       | 容器运行时 id 列表                | ["79e666ac71b70e446eb32a7eecc92830d937a4518ebb871456eae5fd8fcf5627"]                                 |
-| lan_ips                     | List       | 容器内网 IP                       | 10.18.192.225                                                                                        |
+| lan_ips                     | List       | 容器内网 IP                       | ["10.18.192.225"]                                                                                    |
 
 ## 9.8. 设置有状态服务
 
@@ -2817,10 +2816,10 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 
 ### URL Parameters
 
-|    参数    | 类型 | 是否必填 |                                  描述                                 | 示例值  |
-|------------|------|----------|-----------------------------------------------------------------------|---------|
-| id         | long | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 50883   |
-| spec_alias | long | 是       | 新的规格别名（[规格参数列表](../?http#9-0)）                          | C2M2S20 |
+|    参数    |  类型  | 是否必填 |                                  描述                                 | 示例值  |
+|------------|--------|----------|-----------------------------------------------------------------------|---------|
+| id         | long   | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 50883   |
+| spec_alias | String | 是       | 新的规格别名（[规格参数列表](../?http#9-0)）                          | C2M2S20 |
 
 
 ## 9.14. 重启和冷重启服务
