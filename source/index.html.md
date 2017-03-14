@@ -2405,8 +2405,8 @@ curl -X GET -H "Authorization: Token 93cb02be6a83447a8dfd83221e8d4a96" -H "Conte
 | stateful     | int      | 服务状态，0（无状态）/1（有状态） | 1                                                                                                    |
 | port_maps    | List     | 端口映射信息                      | 详见示例                                                                                             |
 | protocol     | String   | 协议                              | TCP                                                                                                  |
-| port         | int      | 容器端口                          | 80                                                                                                   |
-| target_port  | int      | 服务端口                          | 80                                                                                                   |
+| port         | int      | 服务端口                          | 80                                                                                                   |
+| target_port  | int      | 容器端口                          | 80                                                                                                   |
 | spec_info    | Map      | 规格信息                          | {\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20} |
 | stop_service | int      | 停服标识                          | 0                                                                                                    |
 
@@ -2708,8 +2708,8 @@ curl -X PUT -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 |---------------|--------|----------|-----------------------------------------------------------------------|----------|
 | id            | long   | 是       | 服务 id（[获取空间列表](../?http#9-2)，[获取服务列表](../?http#9-6)） | 51572    |
 | port_maps     | List   | 是       | 端口映射信息                                                          | 详见示例 |
-| - target_port | int    | 是       | 服务端口                                                              | 80       |
-| - port        | int    | 是       | 容器端口                                                              | 8080     |
+| - target_port | int    | 是       | 容器端口                                                              | 80       |
+| - port        | int    | 是       | 服务端口                                                              | 8080     |
 | - protocol    | String | 是       | 协议，TCP/UDP                                                         | TCP      |
 
 
