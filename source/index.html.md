@@ -2438,7 +2438,7 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
     "status": "create_succ",
     "service_name": "ubuntu",
     "spec_info": "{\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20}",
-    "port_maps": "[{\"destPort\":80,\"protocol\":\"TCP\",\"sourcePort\":8080}]",
+    "port_maps": "[{\"target_port\":80,\"protocol\":\"TCP\",\"port\":8080}]",
     "stateful": 1,
     "state_public_net": "{\"bandwidth\":20,\"type\":\"flow\",\"used\":true}",
     "extends_disk_size": 0,
@@ -2514,7 +2514,7 @@ curl -X GET -H "Authorization: Token 5b17a473c90c443ca1f37ddcdd59ad0f" -H "Conte
 | status                      | String     | 服务当前状态                      | create_succ                                                                                          |
 | service_name                | String     | 服务名称                          | ubuntu                                                                                               |
 | spec_info                   | Map        | 规格信息                          | {\"cpu\":2000,\"disk_type\":\"SSD\",\"memory\":2147483648,\"spec_alias\":\"C2M2S20\",\"storage\":20} |
-| port_maps                   | List       | 端口映射信息                      | [{\"destPort\":80,\"protocol\":\"TCP\",\"sourcePort\":8080}]                                         |
+| port_maps                   | List       | 端口映射信息                      | [{\"target_port\":80,\"protocol\":\"TCP\",\"port\":8080}]                                         |
 | stateful                    | int        | 服务状态，0（无状态）/1（有状态） | 1                                                                                                    |
 | state_public_net            | Map        | 公网信息                          | {\"bandwidth\":20,\"type\":\"flow\",\"used\":true}                                                   |
 | extends_disk_size           | long       | 扩展盘大小                        | 0                                                                                                    |
