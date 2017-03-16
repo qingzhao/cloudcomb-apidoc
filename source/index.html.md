@@ -18,6 +18,10 @@ search: true
 
 # 1. OpenAPI 简介
 
+<aside class="success">该版本 API 已经正式上线，文档请移步至：[网易蜂巢帮助](http://support.c.163.com/md.html#!容器服务/服务管理/API 手册/OpenAPI 介绍.md)，本站点将停止维护。</aside> 
+
+
+
 蜂巢 API 提供更灵活的资源控制方式，满足你的定制化需求，如自动化部署、持续集成等功能。蜂巢 API 采用 Restful API 风格，支持内省，支持 API 访问频率限制。
 
 蜂巢 API 需要使用 API Token 来发起 API 请求。
